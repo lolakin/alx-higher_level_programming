@@ -1,26 +1,26 @@
-#include "lists.h"
+#ifndef LISTS.H
+#define LISTS.H
+
+#include <stdlib.h>
 
 /**
- * check_cycle - function checks if a linked list conatins a cycle
- * @list: linked list to check
+ * struct listint_s - singly linked list
+ * @n: integer
+ * @next: points to the next node
  *
- * Return: 1 if the list has a cycle, 0 if it doesn't
+ * Description: singly linked list node structure
+ * for alx project
  */
 
-int check_cycle(listint_t *list)
+typedef struct listint_s
 {
-	listint_t *fast = list;
-	listint_t *slow = list;
+	int n;
+	struct listint_s *next;
+} listint_t;
 
-	if (!list)
-		return (0);
+size_t print_listint(const listint *h);
+listint_t *add_nodeint(list_t **head, const int n);
+void free_listint(listint_t  *head);
+int check_cycle(listint_t *list);
 
-	while (slow && fast && fast -> next)
-	{
-		slow = slow -> next;
-		fast = fast -> next -> next;
-		if (fast == slow)
-			return (1);
-	}
-	return (0);
-}
+#endif /* LIST_H * /
